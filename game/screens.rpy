@@ -57,6 +57,7 @@ style scrollbar:
 
 style vscrollbar:
     xsize gui.scrollbar_size
+    unscrollable "hide"
     base_bar Frame("gui/scrollbar/vertical_[prefix_]bar.png", gui.vscrollbar_borders, tile=gui.scrollbar_tile)
     thumb Frame("gui/scrollbar/vertical_[prefix_]thumb.png", gui.vscrollbar_borders, tile=gui.scrollbar_tile)
 
@@ -93,6 +94,47 @@ style frame:
 ## применить к ним настройки стиля.
 ##
 ## https://www.renpy.org/doc/html/screen_special.html#say
+
+screen dictionary():
+    tag menu
+    add 'bg/bg_grey.jpg' 
+
+    hbox:
+        xsize 1900
+        ysize 900
+        xpos 60
+        ypos 60
+
+        viewport id "vp":
+            xsize 1800
+            draggable True
+            mousewheel True
+
+            vbox:
+                spacing 20
+                if persistent.dict0:
+                    hbox:
+                        text "Имплант"
+                        null width 40
+                        text "- модификация тела"
+                if persistent.dict1:
+                    hbox:
+                        text "Сетевик"
+                        null width 40
+                        text "- тот, кто лазает по сетям"
+                if persistent.dict2:
+                    hbox:
+                        text "Team New Net"
+                        null width 40
+                        text "- те, кто сделал новую сеть"
+                if persistent.dict3:
+                    hbox:
+                        text "Образ"
+                        null width 40
+                        text "- записанная душа человека"
+                # дальше добавлять также
+        vbar value YScrollValue("vp")
+    textbutton _("Назад") xalign 0.05 yalign 0.95 action Return()
 
 screen say(who, what):
     style_prefix "say"
@@ -251,6 +293,7 @@ screen quick_menu():
 
             textbutton _("Назад") action Rollback()
             textbutton _("История") action ShowMenu('history')
+            textbutton _("Словарь") action ShowMenu('dictionary')
             textbutton _("Пропуск") action Skip() alternate Skip(fast=True, confirm=True)
             textbutton _("Авто") action Preference("auto-forward", "toggle")
             textbutton _("Сохранить") action ShowMenu('save')
@@ -306,6 +349,8 @@ screen navigation():
             textbutton _("Сохранить") action ShowMenu("save")
 
         textbutton _("Загрузить") action ShowMenu("load")
+
+        textbutton _("Словарь") action ShowMenu("dictionary")
 
         textbutton _("Настройки") action ShowMenu("preferences")
 
@@ -1581,6 +1626,7 @@ style scrollbar:
 
 style vscrollbar:
     variant "small"
+    unscrollable "hide"
     xsize gui.scrollbar_size
     base_bar Frame("gui/phone/scrollbar/vertical_[prefix_]bar.png", gui.vscrollbar_borders, tile=gui.scrollbar_tile)
     thumb Frame("gui/phone/scrollbar/vertical_[prefix_]thumb.png", gui.vscrollbar_borders, tile=gui.scrollbar_tile)
