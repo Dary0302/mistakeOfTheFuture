@@ -14,15 +14,15 @@ define Mira = Character("Мира", color="#e691eb")
 define Zagan = Character("Заган", color="#917776")
 
 # Заставка
-#label splashscreen:
-#    scene black with dissolve
-#    show text "Velius представляет" with dissolve
-#    pause(1)
-#    scene black with dissolve
-#    show text "The mistake of the future" with dissolve
-#    pause(1)
-#    scene black with dissolve
-#    return
+label splashscreen:
+    scene black with dissolve
+    show text "Velius представляет" with dissolve
+    pause(1)
+    scene black with dissolve
+    show text "The mistake of the future" with dissolve
+    pause(1)
+    scene black with dissolve
+    return
 
 # Игра начинается здесь:
 label start:
@@ -37,7 +37,6 @@ label start:
 
 label firstAct:
     scene bg_start_scene_street
-
     ggDenis "Бывают такие дни… {w} Я бы сказал, неважные…"
     ggDenis "Серые, рутинные, ничем не запоминающиеся будни, тянущиеся один за другим, каждый из которых ценен не больше, чем предыдущий."
     ggDenis "Однако, сейчас не такой день… {w} Во всяком случае не совсем."
@@ -53,7 +52,7 @@ label firstAct:
 
     ggDenis "Аааа..{w} Голова....{w} Как ..{w} боль..но"
 
-    scene bg_grey with dissolve
+    scene bg_interference with dissolve
 
     ggDenis "Ааа..{w} Не вижу?...{w} Ничего не вижу."
     Marat "Ёу чел, смотри этот очнулся."
@@ -114,17 +113,19 @@ label secondAct:
     MiraBefore "Спокойно. Не дёргайся и всё будет хорошо."
     ggDenis "<Что? Откуда исходит звук? {w} Будто в голове кто-то говорит>"
     $ persistent.dict0 = True
-    MiraBefore "Так и есть. {w} Я у тебя в голове, а если быть точнее в интерфейсе твоих {a=glossary:Имплант}имплантов{/a}."
+    MiraBefore "Так и есть. Я у тебя в голове, а если быть точнее в интерфейсе твоих {a=glossary:Имплант}имплантов{/a}."
     ggDenis "<Моих чего?>"
     MiraBefore "Сейчас будет немного щипать."
     "(Появляется раздражение в области глаз)"
     # ((Появляется изображение кузова фургона))
+    scene bg_garage
     ggDenis "Я… Я вижу."
     MiraBefore "Можешь не благодарить, также подключила тебя к закрытой сети. {w} До встречи, ‘редактор’."
     "(Покалывание в затылке)"
     ggDenis "<Какой редактор? Что за сюр?>"
     ggDenis "Что… Что это было?"
     # ((Появляется моделька Юргена, его фразы пока что без подписи))
+    show person_urgen_calm at left1
     $ persistent.dict1 = True
     UrgenWithoutSign "Это была Мира. Наш {a=glossary:Сетевик}‘сетевик’{/a}."
     ggDenis "Простите, кто?"
@@ -133,6 +134,7 @@ label secondAct:
     ggDenis "А вы кто?"
     UrgenWithoutSign "Я Юрген. Главный в отряде. Это Мурус – человек, полный сюрпризов и добра."
     # ((Появляется моделька Муруса))
+    show person_murus at right1
     Murus "Приветствую."
     Urgen "За рулём сидит Тодд."
     "(Звук позади)"
@@ -145,6 +147,8 @@ label secondAct:
     ggDenis "Ладно, это давно начало переходить все возможные границы. {w} Ещё раз вам говорю, что я ничего не запускал, не основывал, не… не редактировал. {w} Я шёл домой, потом…"
     ggDenis "Потом каким-то образом оказался здесь… {w} Меня избили, хотели ограбить… {w} Теперь похитили и… {w} и везут не понятно куда. {w} Это нарушение моих гражданских прав, я требую отпустить меня и вызвать полицию."
     # ((Моделька Юргена с красным глазом))
+    hide person_urgen_calm
+    show person_urgen_irritated at left1
     Urgen "Ты меня уже порядком подзадолбал. {w} Хватит ныть, мы тебе жизнь спасли, так что будь добр хотя бы не критиковать наши способы работы, в противном случае можешь возвращаться к своим друганам из переулка."
     ggDenis "<Я в ступоре, с одной стороны он прав, а с другой это не отменяет того, что меня похитили>"
     Murus "Прекратите оба. {w} Мы все в одной лодке плывём."
@@ -205,6 +209,11 @@ label thirdBeating:
     ggDenis "<Он меня куда-то тащит>"
     ggDenis "Это похищение? Куда вы меня тащите?"
     MurusBefore "Спокойно, просто жди. {w} Скоро сам всё поймёшь."
+
+# Координаты для расположения персонажей
+init:
+    $ left1 = Position(xalign=0.2)
+    $ right1 = Position(xalign=0.8)
 
 init python:
     def glossary_handler(target):
