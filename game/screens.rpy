@@ -97,7 +97,7 @@ style frame:
 
 screen dictionary():
     tag menu
-    add 'bg/bg_grey.jpg' 
+    add 'bg/bg_dictionary.jpg' 
 
     hbox:
         xsize 1900
