@@ -1,18 +1,6 @@
 # hf - HiddenFolks (поиск предметов)
 # используется в паре с модулем 7dots.rpy
 
-# пример использования:
-init 1:
-    # определим фон игры, время игры в секундах
-    # и зададим параметры игры - спрайты и положение для собираемых предметов
-    $ bgForGame = "bg_quest"
-    $ nameMistake = "mistake"
-    $ nameAnswer = "answermistake"
-    $ ox = 445
-    $ oy = 530
-    
-    $ hf_init(bgForGame, (nameMistake, ox, oy, _(nameMistake)))
-
 # затем будет вызов игры:
     # $ hf_start() 
 # количество несобранных предметов будет в hf_return
