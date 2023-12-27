@@ -23,7 +23,7 @@ define gui.show_name = True
 
 ## Версия игры.
 
-define config.version = "1.08"
+define config.version = "1.09"
 
 
 ## Текст, помещённый в экран "Об игре". Поместите текст между тройными скобками.
@@ -64,7 +64,7 @@ define config.has_voice = True
 ## проигрываться в главном меню. Этот файл продолжит проигрываться во время
 ## игры, если не будет остановлен, или не начнёт проигрываться другой аудиофайл.
 
-# define config.main_menu_music = "main-menu-theme.ogg"
+define config.main_menu_music = "main_menu_theme.ogg"
 
 
 ## Переходы ####################################################################
@@ -146,7 +146,7 @@ default preferences.afm_time = 15
 ## Этот параметр обычно не должен изменяться, а если и изменился, должен быть
 ## текстовой строчкой, а не выражением.
 
-define config.save_directory = "mistakeOfTheFuture-1697306595"
+define config.save_directory = "lostInTheFuture"
 
 
 ## Иконка ######################################################################

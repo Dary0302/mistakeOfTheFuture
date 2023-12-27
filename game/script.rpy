@@ -23,15 +23,15 @@ define endTodd = False
 define config.default_fullscreen = True
 
 # Заставка
-#label splashscreen:
-#    scene black with dissolve
-#    show text "Velius представляет" with dissolve
-#    pause(1)
-#    scene black with dissolve
-#    show text "The mistake of the future" with dissolve
-#    pause(1)
-#    scene black with dissolve
-#    return
+label splashscreen:
+    scene black with dissolve
+    show text "Velius представляет" with dissolve
+    pause(1)
+    scene black with dissolve
+    show text "Lost in the future" with dissolve
+    pause(1)
+    scene black with dissolve
+    return
 
 # Игра начинается здесь:
 label start:
@@ -68,8 +68,8 @@ label firstAct:
     ggDenis "Иногда кажется, что стоит относиться ко всему проще, брать то, что даёт судьба и \"плыть по течению\". {w}Тем более, и так не плохо живу – есть крыша над головой, не голодаю. {w}Но ведь хочется чего-то большего…"
 
     scene bg_white
-
     stop music
+    play music музыка_фон_кульминация
     play sound ультразвук
 
     ggDenis "Аааа.. {w}Голова.... {w}Как.. {w}боль..но"
@@ -294,6 +294,8 @@ label thirdAct:
     show person_mira_irritated at left1
     show person_todd_excited at right1
 
+    play music музыка_фон_1
+
     Mira "Тодд, назови хоть одну причину тебя не обнулять!"
     ggDenis "{i}<Вот и здравствуйте>{/i}"
     Todd "Тише, тише, сестрёнка, не перед новеньким ведь."
@@ -443,6 +445,8 @@ label fourthAct:
     scene bg_server_room
     show person_mira_irritated
 
+    play music музыка_фон_2
+
     ggDenis "Привет."
     Mira "Стой там."
     ggDenis "Что? Что-то не так."
@@ -509,6 +513,8 @@ label fifthAct:
     show person_mira_calm at left1
     show person_todd_calm at Position(xalign=0.4)
     show person_murus_calm at Position(xalign=-0.15)
+
+    play music музыка_фон_кульминация
 
     Urgen "Через час все выезжаем. {w}Тодд, твой знакомый на другом конце города, так что готовь фургон и настрой сигнализацию в доме. Не хочу вернуться и застать незваных гостей."
     Todd "Юрг, ты так и не сказал мне, откуда информация про него?"
@@ -616,6 +622,8 @@ label fifthAct:
     hide person_urgen_calm
     hide person_murus_calm
 
+    play music музыка_фон_1
+
     ggDenis "Тодд, ведь у нас всё получится?"
     Todd "Не знаю, Брайн не так прост, как считает Юрген."
 
@@ -653,6 +661,8 @@ label fifthAct:
     Murus "Ненадолго, он убедится, что всё в порядке, и сам включит его обратно."
     ggDenis "Ладно, выключай."
     Murus "Мира, будь так добра."
+
+    play music музыка_истории_муруса
 
     # ((Персонажи пропадают, появляется фон с ошибками из первого акта))
     scene bg_interference
@@ -725,14 +735,14 @@ label fifthAct:
     show person_urgen_with_pistol at right
     show person_murus_with_pistol
     show person_brayn_calm at left
-    play music фоновая_музыка
+
+    play music музыка_истории_муруса
 
     ggDenis "Готово."
     Brayn "Хмм, неплохо, неплохо. {w}Сколько, говоришь, работал тестировщиком?"
     Urgen "Очень жаль отрывать вас от беседы, но так что с {a=glossary:Образ}образом{/a}?"
     Brayn "Погоди, капитан. {w}Денис, сейчас снова будет очень больно, прости меня."
 
-    stop music
     #((Глитч экран с ультразвуком из первого акта))
     scene bg_interference with dissolve
     play sound ультразвук
@@ -890,6 +900,8 @@ label sixthAct:
     show person_todd_calm
     show person_mira_calm at left1
     
+    play music музыка_начало
+
     Urgen "Не распускать нюни. {w}Бежать нам некуда, значит будем делать, что задумано."
     Urgen "Тодд, будь \"на низком старте\", чтобы фургон был готов к внезапному выезду."
     Urgen "Мира, проверить безопасность нашей Сети и обучить Дениса. {w}Другого \"редактора\" у нас уже не будет, а отступать уже поздно."
@@ -919,6 +931,8 @@ label sixthAct:
     scene bg_server_room
     show person_mira_calm at left1
 
+    play music фоновая_музыка
+
     Mira "Круто! Теперь нам хоть жить проще будет."
     Mira "А теперь пришло время научиться находить ключи-доступа."
     Mira "Проанализируй часть кода, найди место, где может быть ключ главного менеджера."
@@ -929,6 +943,8 @@ label sixthAct:
 
     scene bg_server_room
     show person_mira_calm at left1
+
+    play music фоновая_музыка
 
     Mira "Как я погляжу, ты всё схватываешь на лету. {w}Такими темпами после нескольких дней практики будешь готов."
     ggDenis "Спасибо, пока что всё выглядит довольно просто."
@@ -945,6 +961,8 @@ label sixthAct:
 
     show person_mira_calm at left1
     show person_todd_calm at right1
+
+    play music музыка_фон_2
 
     Mira "А все в далёком прошлом были такими? {w}Ты через пять дней уже готов грабить и громить фирмы."
     ggDenis "Спасибо. {w}Если так задуматься, то я участвовал в разработке нынешнего языка программирования. {w}Так что ничего удивительного."
@@ -1013,6 +1031,8 @@ label sixthAct:
     ggDenis "А мне что делать?"
     Todd "Мне как раз нужна помощь, за мной."
 
+    play music музыка_истории_муруса
+
     # ((Фон меняется на вид гаража с машиной внутри, Тодд спокойный))
     scene bg_garage_with_car
 
@@ -1046,6 +1066,7 @@ label sixthAct:
             call helpingToddTrue from _call_helpingToddTrue
             $ endTodd = True
         "Прости, ничем не могу помочь.":
+            play music музыка_фон_2
             Todd "Ну ладно. {w}Я думал, что тебе это не составит труда."
             $ endTodd = False
             # ((в концовке после этого выбора Тодд F))
@@ -1083,6 +1104,8 @@ label sixthAct:
             call disputeWithMiraFirst from _call_disputeWithMiraFirst
         "Можем проверить список активных пользователей за всё время.":
             call disputeWithMiraSecond from _call_disputeWithMiraSecond
+
+    play music музыка_титры
 
     return
 
@@ -1289,6 +1312,8 @@ label helpingToddTrue:
     
     call startNinethMiniGame from _call_startNinethMiniGame
 
+    play music музыка_фон_2
+
     ggDenis "Готово."
     Todd "Спасибо, очень выручил. {w}Будем надеяться, что не придётся оказаться в такой ситуации, когда данная \"замена\" будет спасать нам жизнь."
 
@@ -1334,6 +1359,9 @@ label disputeWithMiraFirst:
     show person_urgen_calm
 
     ggDenis "Интересно, где Тодд? {w}Когда я уходил, он возился с фургоном."
+
+    play music музыка_экшн_момент
+
     Urgen "На данный момент вас это не должно интересовать, \"редактор\"."
 
     show person_urgen_calm_with_pistol
@@ -1360,10 +1388,14 @@ label disputeWithMiraFirst:
     return
 
 label disputeWithMiraSecond:
+    play music фоновая_музыка
+
     Mira "Отлично! Спасибо за доверие. {w}Просмотри список пользователей за всё время, а я буду наготове, чтобы вручную отключить и заблокировать одного из пользователей."
     
     # ((Последняя мини-игра по типу предыдущей с таблицей))
     call startTenthMiniGame from _call_startTenthMiniGame
+
+    play music музыка_экшн_момент
 
     Mira "Кажется, получилось. Теперь я спокойна."
 
@@ -1447,6 +1479,8 @@ label firstEnd:
 
     # ((Заган пропадает))
     hide person_zagan
+
+    play music музыка_фон_2
 
     ggDenis "Тодд, ты как никогда вовремя."
 
@@ -1554,6 +1588,8 @@ label secondEnd:
 
 label thirdEnd:
     hide person_zagan
+
+    play music музыка_фон_2
 
     ggDenis "Что произошло?"
     Mira "Тодд обесточил дом. Чёртов гений спас нас."
@@ -1666,6 +1702,8 @@ label fourthEnd:
     Mira "Скотина, как ты мог."
     ggDenis "Ещё идеи?"
     Mira "Прощай, Денис."
+
+    play music музыка_фон_1
 
     # ((Спрайты Миры и Загана пропадают, Юрген сменяется на спокойный спрайт с синим глазом))
     hide person_mira_irritated
@@ -2093,7 +2131,7 @@ label startTenthMiniGame:
 label credit:
     scene black with dissolve
     show text "Игра была разработана командой Velius {p} {p} Тимлид {p} Полина Ульянова {p} {p} Разработчик {p} Дмитрий Леонтьев {p} {p} Геймдизайнер {p} Сергей Савельев {p} {p} Дизайнер {p} Лена Большакова {p} {p} Аналитик {p} Юсиф Садыгов" at txt_credits_up
-    pause 10
+    pause 15
 
     return
 ##
@@ -2167,7 +2205,7 @@ init:
 ## Анимация подъёма текста для титров
 init:
     transform txt_credits_up:
-        yalign 1.5
+        yalign 2.5
         linear 15.0 yalign -1.5
 ##
 
